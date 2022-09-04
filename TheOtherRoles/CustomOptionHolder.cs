@@ -342,7 +342,7 @@ namespace TheOtherRoles {
             bountyHunterReducedCooldown = CustomOption.Create(322, Types.Impostor, "殺死賞金目標後的冷卻", 2.5f, 0f, 30f, 2.5f, bountyHunterSpawnRate);
             bountyHunterPunishmentTime = CustomOption.Create(323, Types.Impostor, "殺死非賞金目標後的冷卻", 20f, 0f, 60f, 2.5f, bountyHunterSpawnRate);
             bountyHunterShowArrow = CustomOption.Create(324, Types.Impostor, "顯示一個指向賞金目標的箭頭", true, bountyHunterSpawnRate);
-            bountyHunterArrowUpdateIntervall = CustomOption.Create(325, Types.Impostor, "箭頭更新時間(秒)", 15f, 2.5f, 60f, 2.5f, bountyHunterShowArrow);
+            bountyHunterArrowUpdateIntervall = CustomOption.Create(325, Types.Impostor, "箭頭更新頻率(秒)", 15f, 2.5f, 60f, 2.5f, bountyHunterShowArrow);
 
             witchSpawnRate = CustomOption.Create(370, Types.Impostor, cs(Witch.color, "女巫"), rates, null, true);
             witchCooldown = CustomOption.Create(371, Types.Impostor, "女巫技能冷卻", 30f, 10f, 120f, 5f, witchSpawnRate);
@@ -435,64 +435,64 @@ namespace TheOtherRoles {
 
             detectiveSpawnRate = CustomOption.Create(120, Types.Crewmate, cs(Detective.color, "偵探"), rates, null, true);
             detectiveAnonymousFootprints = CustomOption.Create(121, Types.Crewmate, "匿名腳印", false, detectiveSpawnRate); 
-            detectiveFootprintIntervall = CustomOption.Create(122, Types.Crewmate, "Footprint Intervall", 0.5f, 0.25f, 10f, 0.25f, detectiveSpawnRate);
-            detectiveFootprintDuration = CustomOption.Create(123, Types.Crewmate, "Footprint Duration", 5f, 0.25f, 10f, 0.25f, detectiveSpawnRate);
-            detectiveReportNameDuration = CustomOption.Create(124, Types.Crewmate, "Time Where Detective Reports Will Have Name", 0, 0, 60, 2.5f, detectiveSpawnRate);
-            detectiveReportColorDuration = CustomOption.Create(125, Types.Crewmate, "Time Where Detective Reports Will Have Color Type", 20, 0, 120, 2.5f, detectiveSpawnRate);
+            detectiveFootprintIntervall = CustomOption.Create(122, Types.Crewmate, "腳印延遲時間", 0.5f, 0.25f, 10f, 0.25f, detectiveSpawnRate);
+            detectiveFootprintDuration = CustomOption.Create(123, Types.Crewmate, "腳印持續時間", 5f, 0.25f, 10f, 0.25f, detectiveSpawnRate);
+            detectiveReportNameDuration = CustomOption.Create(124, Types.Crewmate, "偵探在甚麼時間內報告將會有兇手名字", 0, 0, 60, 2.5f, detectiveSpawnRate);
+            detectiveReportColorDuration = CustomOption.Create(125, Types.Crewmate, "偵探在甚麼時間內報告將會有兇手的顏色類型", 20, 0, 120, 2.5f, detectiveSpawnRate);
 
-            timeMasterSpawnRate = CustomOption.Create(130, Types.Crewmate, cs(TimeMaster.color, "Time Master"), rates, null, true);
-            timeMasterCooldown = CustomOption.Create(131, Types.Crewmate, "Time Master Cooldown", 30f, 10f, 120f, 2.5f, timeMasterSpawnRate);
-            timeMasterRewindTime = CustomOption.Create(132, Types.Crewmate, "Rewind Time", 3f, 1f, 10f, 1f, timeMasterSpawnRate);
-            timeMasterShieldDuration = CustomOption.Create(133, Types.Crewmate, "Time Master Shield Duration", 3f, 1f, 20f, 1f, timeMasterSpawnRate);
+            timeMasterSpawnRate = CustomOption.Create(130, Types.Crewmate, cs(TimeMaster.color, "時間大師"), rates, null, true);
+            timeMasterCooldown = CustomOption.Create(131, Types.Crewmate, "時間大師技能冷卻時間", 30f, 10f, 120f, 2.5f, timeMasterSpawnRate);
+            timeMasterRewindTime = CustomOption.Create(132, Types.Crewmate, "回朔時間(秒)", 3f, 1f, 10f, 1f, timeMasterSpawnRate);
+            timeMasterShieldDuration = CustomOption.Create(133, Types.Crewmate, "時間之盾持續時間", 3f, 1f, 20f, 1f, timeMasterSpawnRate);
 
-            medicSpawnRate = CustomOption.Create(140, Types.Crewmate, cs(Medic.color, "Medic"), rates, null, true);
-            medicShowShielded = CustomOption.Create(143, Types.Crewmate, "Show Shielded Player", new string[] {"Everyone", "Shielded + Medic", "Medic"}, medicSpawnRate);
-            medicShowAttemptToShielded = CustomOption.Create(144, Types.Crewmate, "Shielded Player Sees Murder Attempt", false, medicSpawnRate);
-            medicSetOrShowShieldAfterMeeting = CustomOption.Create(145, Types.Crewmate, "Shield Will Be Activated", new string[] { "Instantly", "Instantly, Visible\nAfter Meeting", "After Meeting" }, medicSpawnRate);
+            medicSpawnRate = CustomOption.Create(140, Types.Crewmate, cs(Medic.color, "醫生"), rates, null, true);
+            medicShowShielded = CustomOption.Create(143, Types.Crewmate, "顯示被上盾的玩家", new string[] {"全部人", "被上盾的玩家+醫生", "醫生"}, medicSpawnRate);
+            medicShowAttemptToShielded = CustomOption.Create(144, Types.Crewmate, "被上盾的玩家可以看到被殺嘗試", false, medicSpawnRate);
+            medicSetOrShowShieldAfterMeeting = CustomOption.Create(145, Types.Crewmate, "盾牌被啟用的時間", new string[] { "立刻", "立刻, 可見\n會議後", "會議後" }, medicSpawnRate);
 
-            medicShowAttemptToMedic = CustomOption.Create(146, Types.Crewmate, "Medic Sees Murder Attempt On Shielded Player", false, medicSpawnRate);
+            medicShowAttemptToMedic = CustomOption.Create(146, Types.Crewmate, "醫生可以看到殺人嘗試在被上盾的玩家", false, medicSpawnRate);
 
-            swapperSpawnRate = CustomOption.Create(150, Types.Crewmate, cs(Swapper.color, "Swapper"), rates, null, true);
-            swapperCanCallEmergency = CustomOption.Create(151, Types.Crewmate, "Swapper Can Call Emergency Meeting", false, swapperSpawnRate);
-            swapperCanOnlySwapOthers = CustomOption.Create(152, Types.Crewmate, "Swapper Can Only Swap Others", false, swapperSpawnRate);
+            swapperSpawnRate = CustomOption.Create(150, Types.Crewmate, cs(Swapper.color, "換票師"), rates, null, true);
+            swapperCanCallEmergency = CustomOption.Create(151, Types.Crewmate, "換票師可以拍桌", false, swapperSpawnRate);
+            swapperCanOnlySwapOthers = CustomOption.Create(152, Types.Crewmate, "換票師無法交換自身的票數", false, swapperSpawnRate);
 
-            swapperSwapsNumber = CustomOption.Create(153, Types.Crewmate, "Initial Swap Charges", 1f, 0f, 5f, 1f, swapperSpawnRate);
-            swapperRechargeTasksNumber = CustomOption.Create(154, Types.Crewmate, "Number Of Tasks Needed For Recharging", 2f, 1f, 10f, 1f, swapperSpawnRate);
+            swapperSwapsNumber = CustomOption.Create(153, Types.Crewmate, "每次交換所需的充電次數", 1f, 0f, 5f, 1f, swapperSpawnRate);
+            swapperRechargeTasksNumber = CustomOption.Create(154, Types.Crewmate, "做完多少任務才能充電", 2f, 1f, 10f, 1f, swapperSpawnRate);
 
 
-            seerSpawnRate = CustomOption.Create(160, Types.Crewmate, cs(Seer.color, "Seer"), rates, null, true);
-            seerMode = CustomOption.Create(161, Types.Crewmate, "Seer Mode", new string[]{ "Show Death Flash + Souls", "Show Death Flash", "Show Souls"}, seerSpawnRate);
-            seerLimitSoulDuration = CustomOption.Create(163, Types.Crewmate, "Seer Limit Soul Duration", false, seerSpawnRate);
-            seerSoulDuration = CustomOption.Create(162, Types.Crewmate, "Seer Soul Duration", 15f, 0f, 120f, 5f, seerLimitSoulDuration);
+            seerSpawnRate = CustomOption.Create(160, Types.Crewmate, cs(Seer.color, "先知"), rates, null, true);
+            seerMode = CustomOption.Create(161, Types.Crewmate, "先知模式", new string[]{ "顯示閃光+靈魂", "顯示閃光", "顯示靈魂"}, seerSpawnRate);
+            seerLimitSoulDuration = CustomOption.Create(163, Types.Crewmate, "先知最大幽靈殘留時間", false, seerSpawnRate);
+            seerSoulDuration = CustomOption.Create(162, Types.Crewmate, "先知幽靈殘留時間", 15f, 0f, 120f, 5f, seerLimitSoulDuration);
         
-            hackerSpawnRate = CustomOption.Create(170, Types.Crewmate, cs(Hacker.color, "Hacker"), rates, null, true);
-            hackerCooldown = CustomOption.Create(171, Types.Crewmate, "Hacker Cooldown", 30f, 5f, 60f, 5f, hackerSpawnRate);
-            hackerHackeringDuration = CustomOption.Create(172, Types.Crewmate, "Hacker Duration", 10f, 2.5f, 60f, 2.5f, hackerSpawnRate);
-            hackerOnlyColorType = CustomOption.Create(173, Types.Crewmate, "Hacker Only Sees Color Type", false, hackerSpawnRate);
-            hackerToolsNumber = CustomOption.Create(174, Types.Crewmate, "Max Mobile Gadget Charges", 5f, 1f, 30f, 1f, hackerSpawnRate);
-            hackerRechargeTasksNumber = CustomOption.Create(175, Types.Crewmate, "Number Of Tasks Needed For Recharging", 2f, 1f, 5f, 1f, hackerSpawnRate);
-            hackerNoMove = CustomOption.Create(176, Types.Crewmate, "Cant Move During Mobile Gadget Duration", true, hackerSpawnRate);
+            hackerSpawnRate = CustomOption.Create(170, Types.Crewmate, cs(Hacker.color, "駭客"), rates, null, true);
+            hackerCooldown = CustomOption.Create(171, Types.Crewmate, "駭客技能冷卻", 30f, 5f, 60f, 5f, hackerSpawnRate);
+            hackerHackeringDuration = CustomOption.Create(172, Types.Crewmate, "駭客技能持續時間", 10f, 2.5f, 60f, 2.5f, hackerSpawnRate);
+            hackerOnlyColorType = CustomOption.Create(173, Types.Crewmate, "駭客只能看到顏色類型", false, hackerSpawnRate);
+            hackerToolsNumber = CustomOption.Create(174, Types.Crewmate, "最大平板工具充電次數", 5f, 1f, 30f, 1f, hackerSpawnRate);
+            hackerRechargeTasksNumber = CustomOption.Create(175, Types.Crewmate, "做完多少任務才能充電", 2f, 1f, 5f, 1f, hackerSpawnRate);
+            hackerNoMove = CustomOption.Create(176, Types.Crewmate, "無法在查看平板小工具的持續時間時移動", true, hackerSpawnRate);
 
-            trackerSpawnRate = CustomOption.Create(200, Types.Crewmate, cs(Tracker.color, "Tracker"), rates, null, true);
-            trackerUpdateIntervall = CustomOption.Create(201, Types.Crewmate, "Tracker Update Intervall", 5f, 1f, 30f, 1f, trackerSpawnRate);
-            trackerResetTargetAfterMeeting = CustomOption.Create(202, Types.Crewmate, "Tracker Reset Target After Meeting", false, trackerSpawnRate);
-            trackerCanTrackCorpses = CustomOption.Create(203, Types.Crewmate, "Tracker Can Track Corpses", true, trackerSpawnRate);
-            trackerCorpsesTrackingCooldown = CustomOption.Create(204, Types.Crewmate, "Corpses Tracking Cooldown", 30f, 5f, 120f, 5f, trackerCanTrackCorpses);
-            trackerCorpsesTrackingDuration = CustomOption.Create(205, Types.Crewmate, "Corpses Tracking Duration", 5f, 2.5f, 30f, 2.5f, trackerCanTrackCorpses);
+            trackerSpawnRate = CustomOption.Create(200, Types.Crewmate, cs(Tracker.color, "追蹤者"), rates, null, true);
+            trackerUpdateIntervall = CustomOption.Create(201, Types.Crewmate, "箭頭更新頻率(秒)", 5f, 1f, 30f, 1f, trackerSpawnRate);
+            trackerResetTargetAfterMeeting = CustomOption.Create(202, Types.Crewmate, "追蹤者的目標在會議後重設", false, trackerSpawnRate);
+            trackerCanTrackCorpses = CustomOption.Create(203, Types.Crewmate, "追蹤者可以追蹤屍體", true, trackerSpawnRate);
+            trackerCorpsesTrackingCooldown = CustomOption.Create(204, Types.Crewmate, "屍體追蹤技能冷卻", 30f, 5f, 120f, 5f, trackerCanTrackCorpses);
+            trackerCorpsesTrackingDuration = CustomOption.Create(205, Types.Crewmate, "屍體追蹤技能持續時間", 5f, 2.5f, 30f, 2.5f, trackerCanTrackCorpses);
                            
-            snitchSpawnRate = CustomOption.Create(210, Types.Crewmate, cs(Snitch.color, "Snitch"), rates, null, true);
-            snitchLeftTasksForReveal = CustomOption.Create(211, Types.Crewmate, "Task Count Where The Snitch Will Be Revealed", 1f, 0f, 5f, 1f, snitchSpawnRate);
-            snitchIncludeTeamJackal = CustomOption.Create(212, Types.Crewmate, "Include Team Jackal", false, snitchSpawnRate);
-            snitchTeamJackalUseDifferentArrowColor = CustomOption.Create(213, Types.Crewmate, "Use Different Arrow Color For Team Jackal", true, snitchIncludeTeamJackal);
+            snitchSpawnRate = CustomOption.Create(210, Types.Crewmate, cs(Snitch.color, "告密者"), rates, null, true);
+            snitchLeftTasksForReveal = CustomOption.Create(211, Types.Crewmate, "剩餘多少任務告密者將會被揭示", 1f, 0f, 5f, 1f, snitchSpawnRate);
+            snitchIncludeTeamJackal = CustomOption.Create(212, Types.Crewmate, "告密者也可見豺狼團隊", false, snitchSpawnRate);
+            snitchTeamJackalUseDifferentArrowColor = CustomOption.Create(213, Types.Crewmate, "對豺狼團隊使用不同的箭頭顏色標記", true, snitchIncludeTeamJackal);
 
-            spySpawnRate = CustomOption.Create(240, Types.Crewmate, cs(Spy.color, "Spy"), rates, null, true);
-            spyCanDieToSheriff = CustomOption.Create(241, Types.Crewmate, "Spy Can Die To Sheriff", false, spySpawnRate);
-            spyImpostorsCanKillAnyone = CustomOption.Create(242, Types.Crewmate, "Impostors Can Kill Anyone If There Is A Spy", true, spySpawnRate);
-            spyCanEnterVents = CustomOption.Create(243, Types.Crewmate, "Spy Can Enter Vents", false, spySpawnRate);
-            spyHasImpostorVision = CustomOption.Create(244, Types.Crewmate, "Spy Has Impostor Vision", false, spySpawnRate);
+            spySpawnRate = CustomOption.Create(240, Types.Crewmate, cs(Spy.color, "間諜"), rates, null, true);
+            spyCanDieToSheriff = CustomOption.Create(241, Types.Crewmate, "間諜可以死於警長", false, spySpawnRate);
+            spyImpostorsCanKillAnyone = CustomOption.Create(242, Types.Crewmate, "如果有間諜狼人可以殺死任何人(包括他的隊友)", true, spySpawnRate);
+            spyCanEnterVents = CustomOption.Create(243, Types.Crewmate, "間諜可以跳管道", false, spySpawnRate);
+            spyHasImpostorVision = CustomOption.Create(244, Types.Crewmate, "間諜有狼人的視野", false, spySpawnRate);
 
-            portalmakerSpawnRate = CustomOption.Create(390, Types.Crewmate, cs(Portalmaker.color, "Portalmaker"), rates, null, true);
-            portalmakerCooldown = CustomOption.Create(391, Types.Crewmate, "Portalmaker Cooldown", 30f, 10f, 60f, 2.5f, portalmakerSpawnRate);
+            portalmakerSpawnRate = CustomOption.Create(390, Types.Crewmate, cs(Portalmaker.color, "傳送者"), rates, null, true);
+            portalmakerCooldown = CustomOption.Create(391, Types.Crewmate, "傳送者放置技能冷卻", 30f, 10f, 60f, 2.5f, portalmakerSpawnRate);
             portalmakerUsePortalCooldown = CustomOption.Create(392, Types.Crewmate, "Use Portal Cooldown", 30f, 10f, 60f, 2.5f, portalmakerSpawnRate);
             portalmakerLogOnlyColorType = CustomOption.Create(393, Types.Crewmate, "Portalmaker Log Only Shows Color Type", true, portalmakerSpawnRate);
             portalmakerLogHasTime = CustomOption.Create(394, Types.Crewmate, "Log Shows Time", true, portalmakerSpawnRate);

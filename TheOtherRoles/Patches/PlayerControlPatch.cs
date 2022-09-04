@@ -971,15 +971,15 @@ namespace TheOtherRoles.Patches {
                     string msg = "";
 
                     if (isMedicReport) {
-                        msg = $"Body Report: Killed {Math.Round(timeSinceDeath / 1000)}s ago!";
+                        msg = $"屍體報告: 死在{Math.Round(timeSinceDeath / 1000)}秒前!";
                     } else if (isDetectiveReport) {
                         if (timeSinceDeath < Detective.reportNameDuration * 1000) {
-                            msg =  $"Body Report: The killer appears to be {deadPlayer.killerIfExisting.Data.PlayerName}!";
+                            msg =  $"屍體報告: 兇手是{deadPlayer.killerIfExisting.Data.PlayerName}!";
                         } else if (timeSinceDeath < Detective.reportColorDuration * 1000) {
                             var typeOfColor = Helpers.isLighterColor(deadPlayer.killerIfExisting.Data.DefaultOutfit.ColorId) ? "lighter" : "darker";
-                            msg =  $"Body Report: The killer appears to be a {typeOfColor} color!";
+                            msg =  $"屍體報告: 兇手的顏色類型是{typeOfColor}色!";
                         } else {
-                            msg = $"Body Report: The corpse is too old to gain information from!";
+                            msg = $"屍體報告: 這具屍體死太久了無法獲得訊息!";
                         }
                     }
 
@@ -989,7 +989,7 @@ namespace TheOtherRoles.Patches {
                         {
                             FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(CachedPlayer.LocalPlayer.PlayerControl, msg);
                         }
-                        if (msg.IndexOf("who", StringComparison.OrdinalIgnoreCase) >= 0)
+                        if (msg.IndexOf("誰", StringComparison.OrdinalIgnoreCase) >= 0)
                         {
                             FastDestroyableSingleton<Assets.CoreScripts.Telemetry>.Instance.SendWho();
                         }

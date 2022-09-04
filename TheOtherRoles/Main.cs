@@ -86,10 +86,10 @@ namespace TheOtherRoles
             Instance = this;
 
             DebugMode = Config.Bind("自定義", "開啟偵錯模式", false);
-            GhostsSeeTasks = Config.Bind("自定義", "靈魂可以看到剩下的任務", true);
-            GhostsSeeRoles = Config.Bind("自定義", "靈魂可以看見職業", true);
+            GhostsSeeTasks = Config.Bind("自定義", "靈魂可以看見剩下的任務", true);
+            GhostsSeeRoles = Config.Bind("自定義", "靈魂可以看見所有人的職業", true);
             GhostsSeeModifier = Config.Bind("自定義", "靈魂可以看見附加效果", true);
-            GhostsSeeVotes = Config.Bind("自定義", "靈魂可以看見投票", true);
+            GhostsSeeVotes = Config.Bind("自定義", "靈魂可以看見所有人的投票", true);
             ShowRoleSummary = Config.Bind("自定義", "顯示職業總結", true);
             ShowLighterDarker = Config.Bind("自定義", "顯示深/淺色", true);
             EnableSoundEffects = Config.Bind("自定義", "開啟聲音", true);
