@@ -160,7 +160,7 @@ namespace TheOtherRoles
                     option.updateSelection((int)selection);
                 }
             } catch (Exception e) {
-                TheOtherRolesPlugin.Logger.LogError("Error while deserializing options: " + e.Message);
+                TheOtherRolesPlugin.Logger.LogError("解析設定時發生錯誤: " + e.Message);
             }
         }
 
@@ -185,7 +185,7 @@ namespace TheOtherRoles
                     try {
                         setRole(roleId, playerId);
                     } catch (Exception e) {
-                        TheOtherRolesPlugin.Logger.LogError("Error while deserializing roles: " + e.Message);
+                        TheOtherRolesPlugin.Logger.LogError("解析職業時發生錯誤: " + e.Message);
                     }
             }
             
@@ -804,7 +804,7 @@ namespace TheOtherRoles
             Trickster.lightsOutTimer = Trickster.lightsOutDuration;
             // If the local player is impostor indicate lights out
             if(CachedPlayer.LocalPlayer.Data.Role.IsImpostor) {
-                new CustomMessage("Lights are out", Trickster.lightsOutDuration);
+                new CustomMessage("關燈了!", Trickster.lightsOutDuration);
             }
         }
 
@@ -937,10 +937,10 @@ namespace TheOtherRoles
             PlayerControl guessedTarget = Helpers.playerById(guessedTargetId);
             if (Guesser.showInfoInGhostChat && CachedPlayer.LocalPlayer.Data.IsDead && guessedTarget != null) {
                 RoleInfo roleInfo = RoleInfo.allRoleInfos.FirstOrDefault(x => (byte)x.roleId == guessedRoleId);
-                string msg = $"Guesser guessed the role {roleInfo?.name ?? ""} for {guessedTarget.Data.PlayerName}!";
+                string msg = $"賭怪猜測{guessedTarget.Data.PlayerName}的職業為{roleInfo?.name ?? ""}!";
                 if (AmongUsClient.Instance.AmClient && FastDestroyableSingleton<HudManager>.Instance)
                     FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(guesser, msg);
-                if (msg.IndexOf("who", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (msg.IndexOf("誰", StringComparison.OrdinalIgnoreCase) >= 0)
                     FastDestroyableSingleton<Assets.CoreScripts.Telemetry>.Instance.SendWho();
             }
         }

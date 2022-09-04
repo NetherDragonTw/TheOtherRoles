@@ -41,7 +41,7 @@ public static class CachedPlayerPatches
         [HarmonyTargetMethod]
         public static MethodBase TargetMethod()
         {
-            var type = typeof(PlayerControl).GetNestedTypes(AccessTools.all).FirstOrDefault(t => t.Name.Contains("Start"));
+            var type = typeof(PlayerControl).GetNestedTypes(AccessTools.all).FirstOrDefault(t => t.Name.Contains("開始"));
             return AccessTools.Method(type, nameof(IEnumerator.MoveNext));
         }
 

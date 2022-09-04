@@ -1,4 +1,6 @@
-﻿global using UnhollowerBaseLib;
+﻿// Taken from https://github.com/NuclearPowered/Reactor/ , licensed under the LGPLv3
+
+global using UnhollowerBaseLib;
 global using UnhollowerBaseLib.Attributes;
 global using UnhollowerRuntimeLib;
 
@@ -55,16 +57,16 @@ namespace TheOtherRoles
         public static void UpdateRegions() {
             ServerManager serverManager = FastDestroyableSingleton<ServerManager>.Instance;
             var regions = new IRegionInfo[] {
-                new DnsRegionInfo("mods.hopto.org", "Modded NA (MNA)", StringNames.NoTranslation, "mods.hopto.org", 443, false).CastFast<IRegionInfo>(),
-                new DnsRegionInfo("au-eu.duikbo.at", "Modded EU (MEU)", StringNames.NoTranslation, "au-eu.duikbo.at", 22023, false).CastFast<IRegionInfo>(),
+                new DnsRegionInfo("mods.hopto.org", "北美洲模組服(MNA)", StringNames.NoTranslation, "mods.hopto.org", 443, false).CastFast<IRegionInfo>(),
+                new DnsRegionInfo("au-eu.duikbo.at", "歐洲模組服(MEU)", StringNames.NoTranslation, "au-eu.duikbo.at", 22023, false).CastFast<IRegionInfo>(),
                 new DnsRegionInfo(Ip.Value, "Custom", StringNames.NoTranslation, Ip.Value, Port.Value, false).CastFast<IRegionInfo>()
             };
             
-            IRegionInfo ? currentRegion = serverManager.CurrentRegion;
+            IRegionInfo currentRegion = serverManager.CurrentRegion;
             Logger.LogInfo($"Adding {regions.Length} regions");
             foreach (IRegionInfo region in regions) {
                 if (region == null) 
-                    Logger.LogError("Could not add region");
+                    Logger.LogError("無法加入該地區");
                 else {
                     if (currentRegion != null && region.Name.Equals(currentRegion.Name, StringComparison.OrdinalIgnoreCase)) 
                         currentRegion = region;               
@@ -74,7 +76,7 @@ namespace TheOtherRoles
 
             // AU remembers the previous region that was set, so we need to restore it
             if (currentRegion != null) {
-                Logger.LogDebug("Resetting previous region");
+                Logger.LogDebug("重設到上一次連線到的地區");
                 serverManager.SetRegion(currentRegion);
             }
         }
@@ -83,20 +85,20 @@ namespace TheOtherRoles
             Logger = Log;
             Instance = this;
 
-            DebugMode = Config.Bind("Custom", "Enable Debug Mode", false);
-            GhostsSeeTasks = Config.Bind("Custom", "Ghosts See Remaining Tasks", true);
-            GhostsSeeRoles = Config.Bind("Custom", "Ghosts See Roles", true);
-            GhostsSeeModifier = Config.Bind("Custom", "Ghosts See Modifier", true);
-            GhostsSeeVotes = Config.Bind("Custom", "Ghosts See Votes", true);
-            ShowRoleSummary = Config.Bind("Custom", "Show Role Summary", true);
-            ShowLighterDarker = Config.Bind("Custom", "Show Lighter / Darker", true);
-            EnableSoundEffects = Config.Bind("Custom", "Enable Sound Effects", true);
-            EnableHorseMode = Config.Bind("Custom", "Enable Horse Mode", false);
-            ShowPopUpVersion = Config.Bind("Custom", "Show PopUp", "0");
+            DebugMode = Config.Bind("自定義", "開啟偵錯模式", false);
+            GhostsSeeTasks = Config.Bind("自定義", "靈魂可以看到剩下的任務", true);
+            GhostsSeeRoles = Config.Bind("自定義", "靈魂可以看見職業", true);
+            GhostsSeeModifier = Config.Bind("自定義", "靈魂可以看見附加效果", true);
+            GhostsSeeVotes = Config.Bind("自定義", "靈魂可以看見投票", true);
+            ShowRoleSummary = Config.Bind("自定義", "顯示職業總結", true);
+            ShowLighterDarker = Config.Bind("自定義", "顯示深/淺色", true);
+            EnableSoundEffects = Config.Bind("自定義", "開啟聲音", true);
+            EnableHorseMode = Config.Bind("自定義", "開啟人馬模式", false);
+            ShowPopUpVersion = Config.Bind("自定義", "顯示更新版本", "0");
             
 
-            Ip = Config.Bind("Custom", "Custom Server IP", "127.0.0.1");
-            Port = Config.Bind("Custom", "Custom Server Port", (ushort)22023);
+            Ip = Config.Bind("自定義", "自定義伺服器IP", "127.0.0.1");
+            Port = Config.Bind("自定義", "自定義伺服器端口", (ushort)22023);
             defaultRegions = ServerManager.DefaultRegions;
 
             UpdateRegions();
@@ -104,7 +106,7 @@ namespace TheOtherRoles
             GameOptionsData.RecommendedImpostors = GameOptionsData.MaxImpostors = Enumerable.Repeat(3, 16).ToArray(); // Max Imp = Recommended Imp = 3
             GameOptionsData.MinPlayers = Enumerable.Repeat(4, 15).ToArray(); // Min Players = 4
 
-            DebugMode = Config.Bind("Custom", "Enable Debug Mode", false);
+            DebugMode = Config.Bind("自定義", "開啟偵錯模式", false);
             Harmony.PatchAll();
 
             CustomOptionHolder.Load();

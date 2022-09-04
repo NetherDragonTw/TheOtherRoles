@@ -98,8 +98,8 @@ namespace TheOtherRoles.Modules
             }));
 
             var text = button.transform.GetChild(0).GetComponent<TMP_Text>();
-            string t = "Update";
-            if (TORUpdate is null && SubmergedUpdate is not null) t = SubmergedCompatibility.Loaded ? $"Update\nSubmerged" : $"Download\nSubmerged";
+            string t = "更新";
+            if (TORUpdate is null && SubmergedUpdate is not null) t = SubmergedCompatibility.Loaded ? $"更新\nSubmerged" : $"下載\nSubmerged";
 
             StartCoroutine(Effects.Lerp(0.1f, (System.Action<float>)(p => text.SetText(t))));
 
@@ -107,7 +107,7 @@ namespace TheOtherRoles.Modules
             passiveButton.OnMouseOut.AddListener((Action)(() => buttonSprite.color = text.color = Color.red));
 
             var isSubmerged = TORUpdate == null;
-            var announcement = $"<size=150%>A new <color=#FC0303>{(isSubmerged ? "Submerged" : "THE OTHER ROLES")}</color> update to {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)} is available</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
+            var announcement = $"<size=150%>有新版的 <color=#FC0303>{(isSubmerged ? "Submerged" : "THE OTHER ROLES")}</color> 更新到了{(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)}</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
             var mgr = FindObjectOfType<MainMenuManager>(true);
             if (isSubmerged && !SubmergedCompatibility.Loaded) showPopUp = false;
             if (showPopUp) mgr.StartCoroutine(CoShowAnnouncement(announcement));
@@ -129,13 +129,13 @@ namespace TheOtherRoles.Modules
 
             var button = popup.transform.GetChild(2).gameObject;
             button.SetActive(false);
-            popup.TextAreaTMP.text = $"Updating {updateName}\nPlease wait...";
+            popup.TextAreaTMP.text = $"更新{updateName}中\n請稍後...";
             
             var download = Task.Run(DownloadUpdate);
             while (!download.IsCompleted) yield return null;
             
             button.SetActive(true);
-            popup.TextAreaTMP.text = download.Result ? $"{updateName}\nupdated successfully\nPlease restart the game." : "Update wasn't successful\nTry again later,\nor update manually.";
+            popup.TextAreaTMP.text = download.Result ? $"{updateName}\n更新完成\n請重新啟動遊戲" : "更新失敗\n請嘗試重新更新\n或嘗試手動更新";
         }
 
         [HideFromIl2Cpp]
